@@ -6,17 +6,17 @@ package uk.co.jemos.podam.test.dto.pdm6;
  * @author ludochane
  * 
  */
-public class Child {
+public class Parent {
 
-	private Parent parent;
+	private Child child;
 	private String name;
 
-	public Parent getParent() {
-		return parent;
+	public Child getChild() {
+		return child;
 	}
 
-	public void setParent(Parent parent) {
-		this.parent = parent;
+	public void setChild(Child child) {
+		this.child = child;
 	}
 
 	public String getName() {
