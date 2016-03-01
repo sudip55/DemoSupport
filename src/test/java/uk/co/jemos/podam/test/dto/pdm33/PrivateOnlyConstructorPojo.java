@@ -9,32 +9,24 @@ import java.io.Serializable;
  * @author mtedone
  * 
  */
-public class NoDefaultPublicConstructorPojo implements Serializable {
+public class PrivateOnlyConstructorPojo implements Serializable {
 
-	//------------------->> Constants
+	// ------------------->> Constants
 
 	private static final long serialVersionUID = 1L;
 
-	//------------------->> Instance / Static variables
+	// ------------------->> Instance / Static variables
 
 	private String firstName;
 
 	private int intField;
 
-	//------------------->> Constructors
+	// ------------------->> Constructors
 
-	/**
-	 * Public no-default constructor.
-	 * 
-	 * @param firstName
-	 *            The first name
-	 * 
-	 */
-	public NoDefaultPublicConstructorPojo(String firstName) {
-		this.firstName = firstName;
+	private PrivateOnlyConstructorPojo() {
 	}
 
-	//------------------->> Public methods
+	// ------------------->> Public methods
 
 	// ------------------->> Getters / Setters
 
@@ -68,9 +60,9 @@ public class NoDefaultPublicConstructorPojo implements Serializable {
 		this.intField = intField;
 	}
 
-	//------------------->> Private methods
+	// ------------------->> Private methods
 
-	//------------------->> equals() / hashcode() / toString()
+	// ------------------->> equals() / hashcode() / toString()
 
 	/**
 	 * Constructs a <code>String</code> with all attributes in name = value
@@ -84,13 +76,13 @@ public class NoDefaultPublicConstructorPojo implements Serializable {
 
 		StringBuilder retValue = new StringBuilder();
 
-		retValue.append("NoDefaultPublicConstructorPojo ( ").append("firstName = ")
-				.append(firstName).append(TAB).append("intField = ").append(intField).append(TAB)
-				.append(" )");
+		retValue.append("PrivateOnlyPojo ( ").append("firstName = ")
+				.append(firstName).append(TAB).append("intField = ")
+				.append(intField).append(TAB).append(" )");
 
 		return retValue.toString();
 	}
 
-	//------------------->> Inner classes
+	// ------------------->> Inner classes
 
 }

@@ -9,10 +9,9 @@ import java.io.Serializable;
  * @author mtedone
  * 
  */
-public class NoDefaultPublicConstructorPojo implements Serializable {
+public class ProtectedNonDefaultConstructorPojo implements Serializable {
 
 	//------------------->> Constants
-
 	private static final long serialVersionUID = 1L;
 
 	//------------------->> Instance / Static variables
@@ -24,14 +23,16 @@ public class NoDefaultPublicConstructorPojo implements Serializable {
 	//------------------->> Constructors
 
 	/**
-	 * Public no-default constructor.
+	 * Full, non-default, constructor.
 	 * 
 	 * @param firstName
 	 *            The first name
-	 * 
+	 * @param intField
+	 *            The last name
 	 */
-	public NoDefaultPublicConstructorPojo(String firstName) {
+	protected ProtectedNonDefaultConstructorPojo(String firstName, int intField) {
 		this.firstName = firstName;
+		this.intField = intField;
 	}
 
 	//------------------->> Public methods
@@ -84,7 +85,7 @@ public class NoDefaultPublicConstructorPojo implements Serializable {
 
 		StringBuilder retValue = new StringBuilder();
 
-		retValue.append("NoDefaultPublicConstructorPojo ( ").append("firstName = ")
+		retValue.append("ProtectedNonDefaultConstructorPojo ( ").append("firstName = ")
 				.append(firstName).append(TAB).append("intField = ").append(intField).append(TAB)
 				.append(" )");
 
