@@ -7,39 +7,51 @@ import java.util.List;
 import uk.co.jemos.podam.common.PodamConstructor;
 
 /**
- * Pojo to test to test multiple constructors and setters
+ * Pojo to test to test multiple static factory methods
  * 
  * @author divanov
  * 
  */
-public class Pdm4PojoWithSetters {
+public abstract class PojoWithFactoryMethods {
 
 	public static List<String> invocationOrder = new ArrayList<String>();
 
 	private String value;
 	
-	public Pdm4PojoWithSetters(InputStream inputStream) {
+	@PodamConstructor(comment = "choose this one")
+	public static PojoWithFactoryMethods getInstance(String str, InputStream is) {
+		invocationOrder.add("PodamConstructor(str,abstract)");
+		throw new IllegalStateException("Cannot use me");
+	}
+
+	public static PojoWithFactoryMethods getInstance(InputStream inputStream) {
 		invocationOrder.add("InputStream");
 		throw new IllegalStateException("Cannot use me also");
 	}
 
-	public Pdm4PojoWithSetters(int num, int num2) {
+	public static PojoWithFactoryMethods getInstance(int num, int num2) {
 		invocationOrder.add("int,int");
 		throw new IllegalStateException("Cannot use me neither");
 	}
 
-	public Pdm4PojoWithSetters(InputStream inputStream, int num) {
+	public static PojoWithFactoryMethods getInstance(InputStream inputStream, int num) {
 		invocationOrder.add("abstract,int");
 		throw new IllegalStateException("Cannot use me also");
 	}
 
 	@PodamConstructor(comment = "choose this one")
-	public Pdm4PojoWithSetters(String value) {
-		invocationOrder.add("PodamConstructor");
+	public static PojoWithFactoryMethods getInstance(String value) {
+		invocationOrder.add("PodamConstructor(str)");
 		throw new IllegalStateException("Cannot use me");
 	}
 
-	public Pdm4PojoWithSetters() {
+	@PodamConstructor(comment = "choose this one")
+	public static PojoWithFactoryMethods getInstance(String str, boolean bool) {
+		invocationOrder.add("PodamConstructor(str,bool)");
+		throw new IllegalStateException("Cannot use me");
+	}
+
+	public static PojoWithFactoryMethods getInstance() {
 		invocationOrder.add("no-op");
 		throw new IllegalStateException("Cannot use me too");
 	}

@@ -7,39 +7,39 @@ import java.util.List;
 import uk.co.jemos.podam.common.PodamConstructor;
 
 /**
- * Pojo to test to test multiple constructors and setters
+ * Pojo to test to test multiple non-public constructors and setters
  * 
  * @author divanov
  * 
  */
-public class Pdm4PojoWithSetters {
+public class PojoWithMultipleNonPublicConstructors {
 
 	public static List<String> invocationOrder = new ArrayList<String>();
 
 	private String value;
 	
-	public Pdm4PojoWithSetters(InputStream inputStream) {
+	protected PojoWithMultipleNonPublicConstructors(InputStream inputStream) {
 		invocationOrder.add("InputStream");
 		throw new IllegalStateException("Cannot use me also");
 	}
 
-	public Pdm4PojoWithSetters(int num, int num2) {
+	protected PojoWithMultipleNonPublicConstructors(int num, int num2) {
 		invocationOrder.add("int,int");
 		throw new IllegalStateException("Cannot use me neither");
 	}
 
-	public Pdm4PojoWithSetters(InputStream inputStream, int num) {
+	protected PojoWithMultipleNonPublicConstructors(InputStream inputStream, int num) {
 		invocationOrder.add("abstract,int");
 		throw new IllegalStateException("Cannot use me also");
 	}
 
 	@PodamConstructor(comment = "choose this one")
-	public Pdm4PojoWithSetters(String value) {
+	private PojoWithMultipleNonPublicConstructors(String value) {
 		invocationOrder.add("PodamConstructor");
 		throw new IllegalStateException("Cannot use me");
 	}
 
-	public Pdm4PojoWithSetters() {
+	protected PojoWithMultipleNonPublicConstructors() {
 		invocationOrder.add("no-op");
 		throw new IllegalStateException("Cannot use me too");
 	}
